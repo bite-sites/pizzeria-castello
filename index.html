@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizzeria Castello · Italienische Küche in Dülmen</title>
+  <meta name="description" content="Pizzeria Castello in Dülmen — handgemachte Pizza, Pasta, Salate und mehr. Heinrich-Leggewie-Straße 5. Reservierung: (02594) 79 79 565.">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍕%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="Pizzeria Castello — Startseite">
+      <span class="brand-line">Pizzeria</span>
+      <span class="brand-name">Castello</span>
+      <span class="brand-flag" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav">
+      <a href="#menu" data-i18n="nav.menu">Speisekarte</a>
+      <a href="#hours" data-i18n="nav.hours">Öffnungszeiten</a>
+      <a href="#catering" data-i18n="nav.catering">Partyservice</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Sprache wählen">
+        <button data-lang="de" class="is-active" aria-pressed="true">DE</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="tel:+4925947979565" class="cta cta-phone">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+        <span>(02594) 79 79 565</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Seit Jahren in Dülmen · Handgemacht</p>
+    <h1 class="hero-title">
+      <span class="script">Pizzeria</span>
+      <span class="display">Castello</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero.sub">Italienische Küche, holzofenwarme Pizza und ein Sommerabend auf der Terrasse.</p>
+    <div class="hero-actions">
+      <a href="tel:+4925947979565" class="cta cta-primary" data-i18n="hero.cta1">Tisch reservieren</a>
+      <a href="#menu" class="cta cta-ghost" data-i18n="hero.cta2">Zur Speisekarte</a>
+    </div>
+    <div class="hero-meta">
+      <span class="open-badge" id="openBadge" aria-live="polite"></span>
+      <span class="hero-meta-sep" aria-hidden="true">·</span>
+      <span data-i18n="hero.address">Heinrich-Leggewie-Straße 5, 48249 Dülmen</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-inner">
+    <h2 class="section-title" data-i18n="about.title">Liebe Gäste,</h2>
+    <div class="letter">
+      <p data-i18n="about.p1">herzlich willkommen in unserem Restaurant! Wir wünschen uns, dass Sie sich wohl fühlen und Speis &amp; Trank in Ruhe genießen.</p>
+      <p data-i18n="about.p2">Bei Unverträglichkeiten oder besonderen Portionswünschen wenden Sie sich bitte an unser Team — wir informieren Sie gern über Allergene, Zutaten und Zusatzstoffe.</p>
+      <p data-i18n="about.p3">Sind Sie zufrieden, erzählen Sie es jedem. Sind Sie unzufrieden, erzählen Sie es bitte uns.</p>
+      <p class="signature" data-i18n="about.sig">Ihr Castello Team</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="menu.eyebrow">Unsere Karte</p>
+      <h2 class="section-title" data-i18n="menu.title">Speisekarte</h2>
+      <p class="section-sub" data-i18n="menu.sub">Gültig ab März 2026 · alle Preise in Euro inkl. MwSt.</p>
+    </header>
+
+    <nav class="menu-tabs" id="menuTabs" aria-label="Kategorien"></nav>
+
+    <div id="menuRoot" class="menu-root"></div>
+
+    <footer class="menu-foot">
+      <p data-i18n="menu.allergens">Informationen über Allergene erhalten Sie bei unserem Service. Die Zahlen hinter den Gerichten verweisen auf die Legende unten.</p>
+      <details class="allergen-legend">
+        <summary data-i18n="menu.legendToggle">Allergen-Legende anzeigen</summary>
+        <ol id="allergenLegend"></ol>
+      </details>
+      <a href="speisekarte.pdf" class="cta cta-ghost cta-small" target="_blank" rel="noopener" data-i18n="menu.pdf">Original-Speisekarte als PDF</a>
+    </footer>
+  </div>
+</section>
+
+<section class="hours" id="hours">
+  <div class="container hours-inner">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="hours.eyebrow">Wann wir für Sie da sind</p>
+      <h2 class="section-title" data-i18n="hours.title">Öffnungszeiten</h2>
+      <p class="section-sub" data-i18n="hours.sub">Küche bis 21:00 Uhr</p>
+    </header>
+    <table class="hours-table">
+      <thead>
+        <tr>
+          <th data-i18n="hours.day">Tag</th>
+          <th><span data-i18n="hours.winter">November – April</span></th>
+          <th><span data-i18n="hours.summer">Mai – Oktober</span></th>
+        </tr>
+      </thead>
+      <tbody id="hoursBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="catering" id="catering">
+  <div class="container catering-inner">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="catering.eyebrow">Für Ihren Anlass</p>
+      <h2 class="section-title" data-i18n="catering.title">Partyservice</h2>
+    </header>
+    <div class="catering-grid">
+      <div class="catering-copy">
+        <p data-i18n="catering.p1">Geburtstag, Hochzeit, Firmenfeier oder Jubiläum — gerne bereiten wir ein passendes Menü für Ihr Event.</p>
+        <p data-i18n="catering.p2">Keine Location? Auch unser Castello können Sie für Ihre Veranstaltung mieten. Sprechen Sie uns einfach an.</p>
+        <a href="tel:+4925947979565" class="cta cta-primary" data-i18n="catering.cta">Jetzt anfragen</a>
+      </div>
+      <ul class="catering-list" id="cateringList"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Besuchen Sie uns</p>
+      <h2 class="section-title" data-i18n="contact.title">Kontakt &amp; Anfahrt</h2>
+    </header>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 data-i18n="contact.addressLabel">Adresse</h3>
+        <p>
+          Pizzeria Castello<br>
+          Heinrich-Leggewie-Straße 5<br>
+          48249 Dülmen
+        </p>
+
+        <h3 data-i18n="contact.phoneLabel">Telefon</h3>
+        <p>
+          <a href="tel:+4925947979565">(02594) 79 79 565</a><br>
+          <a href="tel:+491741818450">0174 18 18 450</a>
+        </p>
+
+        <h3 data-i18n="contact.emailLabel">E-Mail</h3>
+        <p><a href="mailto:castello.duelmen@gmail.com">castello.duelmen@gmail.com</a></p>
+
+        <h3 data-i18n="contact.socialLabel">Social</h3>
+        <p>
+          <a href="https://www.instagram.com/restaurant_pizzeria_castello/" target="_blank" rel="noopener me">
+            Instagram · @restaurant_pizzeria_castello
+          </a>
+        </p>
+      </div>
+      <div class="map-frame">
+        <iframe
+          title="Pizzeria Castello auf Google Maps"
+          src="https://www.google.com/maps?q=Heinrich-Leggewie-Stra%C3%9Fe+5,+48249+D%C3%BClmen&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <p class="footer-brand">Pizzeria Castello</p>
+      <p data-i18n="footer.tagline">Italienische Küche · Dülmen</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.imprint">Impressum</h4>
+      <p>
+        <span data-i18n="footer.owner">Inhaber:</span> Umut Bozkurt<br>
+        Heinrich-Leggewie-Straße 5, 48249 Dülmen<br>
+        <span data-i18n="footer.vat">USt-IdNr.:</span> DE31257322472
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.kontaktTitle">Kontakt</h4>
+      <p>
+        <a href="tel:+4925947979565">(02594) 79 79 565</a><br>
+        <a href="mailto:castello.duelmen@gmail.com">castello.duelmen@gmail.com</a>
+      </p>
+    </div>
+    <p class="footer-credit">© <span id="year"></span> Pizzeria Castello.</p>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/menu.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
