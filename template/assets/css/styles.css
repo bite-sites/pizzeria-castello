@@ -1,0 +1,686 @@
+:root {
+  --bg: #0f1219;
+  --bg-2: #161b27;
+  --panel: #1d2433;
+  --panel-soft: #212a3b;
+  --ink: #f3f6fb;
+  --ink-soft: #a9b4c9;
+  --line: #2d3a53;
+  --hot: #ff7a59;
+  --cool: #57d3cf;
+  --ok: #57d3cf;
+  --warn: #ffb86b;
+  --maxw: 1180px;
+  --gut: clamp(1rem, 3vw, 2.2rem);
+  --radius: 16px;
+  --header-h: 82px;
+  --tabs-h: 50px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-h: 74px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.55 "Space Grotesk", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 360px at 8% -10%, rgba(87, 211, 207, 0.26), transparent 65%),
+    radial-gradient(1000px 420px at 95% 5%, rgba(255, 122, 89, 0.24), transparent 68%),
+    linear-gradient(180deg, var(--bg) 0%, #0b0e15 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(var(--maxw), 100%);
+  margin: 0 auto;
+  padding: 0 var(--gut);
+}
+
+section {
+  padding: clamp(2.8rem, 6vw, 5rem) 0;
+}
+
+section+section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+:where(section[id]) {
+  scroll-margin-top: var(--header-h);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  background: rgba(15, 18, 25, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: rgba(87, 211, 207, 0.25);
+  box-shadow: 0 14px 28px -28px rgba(0, 0, 0, 0.85);
+}
+
+.header-inner {
+  min-height: var(--header-h);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.brand-line {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cool);
+}
+
+.brand-name {
+  font: 800 clamp(1.1rem, 3vw, 1.5rem)/1 "Fraunces", Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+.primary-nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.primary-nav a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.45rem 0.82rem;
+  color: var(--ink-soft);
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.primary-nav a:hover,
+.primary-nav a.is-active {
+  color: var(--ink);
+  border-color: rgba(87, 211, 207, 0.5);
+  background: rgba(87, 211, 207, 0.12);
+}
+
+.nav-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 0.3rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.lang-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font-weight: 700;
+  padding: 0.32rem 0.64rem;
+}
+
+.lang-toggle button.is-active {
+  color: #0b1018;
+  background: linear-gradient(135deg, var(--cool), #96fff6);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 0.68rem 1.04rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+}
+
+.cta-primary {
+  color: #08111a;
+  background: linear-gradient(135deg, var(--hot), #ffb35c);
+  box-shadow: 0 10px 24px -18px rgba(255, 122, 89, 0.8);
+}
+
+.cta-ghost {
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cta-phone {
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cta-small {
+  padding: 0.48rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-18deg,
+      transparent 0 22px,
+      rgba(255, 255, 255, 0.03) 22px 24px);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-copy {
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(29, 36, 51, 0.9), rgba(25, 30, 42, 0.9));
+}
+
+.hero-panel {
+  padding: clamp(1rem, 2vw, 1.3rem);
+  border-radius: var(--radius);
+  border: 1px solid rgba(87, 211, 207, 0.35);
+  background: linear-gradient(150deg, rgba(18, 25, 38, 0.95), rgba(20, 29, 42, 0.95));
+  align-self: start;
+}
+
+.hero-panel-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cool);
+}
+
+.hero-panel-tip {
+  margin: 0.65rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.hero-eyebrow,
+.eyebrow {
+  margin: 0;
+  color: var(--cool);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
+.hero-title {
+  margin: 0.65rem 0 0.55rem;
+  font: 800 clamp(2rem, 7vw, 4.4rem)/0.95 "Fraunces", Georgia, serif;
+  max-width: 13ch;
+}
+
+.hero-sub {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+.hero-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ink-soft);
+}
+
+.open-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.22rem 0.62rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.open-badge.is-open {
+  color: #062225;
+  background: rgba(87, 211, 207, 0.82);
+  border-color: rgba(87, 211, 207, 0.95);
+}
+
+.open-badge.is-closed {
+  color: #2f1600;
+  background: rgba(255, 184, 107, 0.85);
+  border-color: rgba(255, 184, 107, 0.95);
+}
+
+.section-head {
+  margin-bottom: 1.4rem;
+  max-width: 54rem;
+}
+
+.section-title {
+  margin: 0.45rem 0 0;
+  font: 800 clamp(1.45rem, 4vw, 2.8rem)/1.05 "Fraunces", Georgia, serif;
+}
+
+.section-sub {
+  color: var(--ink-soft);
+  margin: 0.45rem 0 0;
+}
+
+.about-inner,
+.hours-inner,
+.catering-inner,
+.contact-inner {
+  display: grid;
+  gap: 1rem;
+}
+
+.letter,
+.hours-table,
+.catering-copy,
+.catering-list li,
+.contact-card,
+.map-frame {
+  background: linear-gradient(160deg, rgba(29, 36, 51, 0.9), rgba(27, 34, 48, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: var(--radius);
+}
+
+.letter {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.signature {
+  color: var(--cool);
+  font-weight: 700;
+}
+
+.menu-tabs {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 20;
+  display: flex;
+  gap: 0.45rem;
+  overflow: auto;
+  padding: 0.42rem;
+  border-radius: 14px;
+  background: rgba(12, 15, 22, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.menu-tabs button {
+  border: 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink-soft);
+  border-radius: 10px;
+  padding: 0.45rem 0.78rem;
+  white-space: nowrap;
+  font: 700 0.82rem/1 "Space Grotesk", sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.menu-tabs button.is-active {
+  color: #09121d;
+  background: linear-gradient(135deg, var(--cool), #8cf6ff);
+}
+
+.menu-cat {
+  margin-top: 1.1rem;
+  scroll-margin-top: calc(var(--header-h) + var(--tabs-h) + 0.5rem);
+}
+
+.menu-cat-head {
+  margin-bottom: 0.62rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.menu-cat-head h3 {
+  margin: 0;
+  font: 700 clamp(1.15rem, 2.5vw, 1.7rem)/1.1 "Fraunces", Georgia, serif;
+}
+
+.cat-note {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 48ch;
+  font-size: 0.92rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.62rem;
+}
+
+.menu-subgroup {
+  margin-top: 0.9rem;
+}
+
+.subgroup-title {
+  margin: 0 0 0.5rem;
+  color: var(--hot);
+  letter-spacing: 0.03em;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+  padding: 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.menu-item .num {
+  min-width: 1.8rem;
+  color: var(--ink-soft);
+}
+
+.menu-item .name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.menu-item .desc {
+  margin: 0;
+  color: var(--ink-soft);
+  grid-column: 2 / 4;
+}
+
+.menu-item .price {
+  text-align: right;
+}
+
+.menu-item .price .row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.menu-item .price .row em {
+  color: var(--ink-soft);
+  font-style: normal;
+}
+
+.menu-item .price .single {
+  font-weight: 700;
+}
+
+.menu-item .allergens {
+  display: inline-flex;
+  gap: 0.28rem;
+  margin-left: 0.35rem;
+}
+
+.menu-item .allergens span {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  padding: 0 0.33rem;
+}
+
+.menu-foot {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+.allergen-legend {
+  margin-top: 0.5rem;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 0.68rem 0.72rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: left;
+}
+
+.hours-table tr.is-today {
+  background: rgba(87, 211, 207, 0.12);
+}
+
+.catering-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 0.85rem;
+}
+
+.catering-copy {
+  padding: 1rem;
+}
+
+.catering-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.catering-list li {
+  padding: 0.75rem;
+}
+
+.catering-list .name {
+  font-weight: 700;
+}
+
+.catering-list .price {
+  float: right;
+  font-weight: 700;
+  color: var(--cool);
+}
+
+.catering-list .desc {
+  margin: 0.3rem 0 0;
+  color: var(--ink-soft);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.contact-card,
+.map-frame {
+  padding: 1rem;
+}
+
+.contact-card h3 {
+  margin: 0.7rem 0 0.35rem;
+  color: var(--cool);
+}
+
+.contact-card p {
+  margin: 0;
+}
+
+.map-frame iframe {
+  border: 0;
+  width: 100%;
+  min-height: 295px;
+  border-radius: 10px;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.footer-col {
+  color: var(--ink-soft);
+}
+
+.footer-brand {
+  color: var(--ink);
+  font: 800 1.15rem/1.1 "Fraunces", Georgia, serif;
+}
+
+.footer-credit {
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 960px) {
+
+  .hero-inner,
+  .menu-grid,
+  .catering-grid,
+  .contact-grid,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .primary-nav {
+    position: fixed;
+    inset: var(--header-h) 0 auto 0;
+    display: none;
+    flex-direction: column;
+    padding: 0.68rem 0;
+    background: rgba(15, 18, 25, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+  }
+
+  .primary-nav.is-open {
+    display: flex;
+  }
+
+  .primary-nav a {
+    border-radius: 0;
+    padding: 0.76rem var(--gut);
+    border-inline: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    grid-template-columns: auto auto 1fr;
+  }
+
+  .header-actions {
+    justify-self: end;
+  }
+
+  .cta-phone span {
+    display: none;
+  }
+}

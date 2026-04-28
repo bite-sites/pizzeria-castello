@@ -3,3 +3,6 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Base repo policy: nested restaurant repos are fully independent.
+/restaurants/**

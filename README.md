@@ -1,60 +1,78 @@
-# Pizzeria Castello — static site
+# bite-sites-base
 
-Modern, hand-rolled alternative to https://pizzeria-castello.com/?lang=de.
-No build step, no framework, no dependencies. Open `index.html` directly or
-serve the folder with any static server.
+Base repository for the Bite Sites multi-repo setup.
 
-## Local preview
+## Purpose
+
+This repo keeps only shared artifacts:
+
+- reusable website skeleton in `template/`
+- shared AI skills in `skills/`
+- assistant mirrors in `.claude/skills/` and `.github/skills/`
+- utility scripts in `scripts/`
+- nested independent restaurant repos in `restaurants/` (ignored by base git)
+
+## Structure
+
+```
+.
+├─ template/
+│  ├─ index.html
+│  └─ assets/
+│     ├─ css/styles.css
+│     └─ js/{i18n.js,main.js,menu.js}
+├─ skills/
+│  └─ bite-site/SKILL.md
+├─ .claude/skills/
+│  └─ bite-site/SKILL.md
+├─ .github/skills/
+│  └─ bite-site/SKILL.md
+├─ scripts/
+│  └─ sync-skills.sh
+└─ restaurants/ # independent git repos
+```
+
+## Skill Source of Truth
+
+Canonical skills live in `skills/`.
+
+Mirrors for assistants are synced to:
+
+- `.claude/skills/`
+- `.github/skills/`
+
+Use the sync script from repo root:
 
 ```bash
-python3 -m http.server 8765
-# → http://localhost:8765
+./scripts/sync-skills.sh
 ```
 
-## Deploy
+Verify parity without modifying files:
 
-Drop the whole folder onto any static host (Netlify, Vercel, Cloudflare Pages,
-GitHub Pages, plain Nginx). No build command. Make sure `speisekarte.pdf`
-ships alongside `index.html`.
-
-## File map
-
-```
-index.html              — single-page layout, all sections, data-i18n attrs
-assets/css/styles.css   — theme tokens + layout (warm rustic Italian)
-assets/js/i18n.js       — DE/EN strings + applyLang() + lang toggle
-assets/js/menu.js       — full menu data + render functions
-assets/js/main.js       — header scroll state, mobile nav, scroll-spy
-speisekarte.pdf         — original menu PDF, linked from the menu section
+```bash
+./scripts/sync-skills.sh --check
 ```
 
-## Editing the menu
+## Restaurant Repos
 
-All dishes live in `assets/js/menu.js`. Each item is:
+Each folder in `restaurants/` is a standalone git repo.
 
-```js
-{
-  num: '1',
-  name: { de: 'Margherita', en: 'Margherita' },
-  desc: { de: 'Gouda, Tomatensauce', en: 'Gouda, tomato sauce' },
-  allergens: [2, 3, 8],
-  price: { sizes: [{ label: 'ø24', amount: 8.50 }, { label: 'ø30', amount: 10.00 }] },
-  // or for single-price items:
-  // price: { single: 4.50 },
-}
+Initialize or reinitialize a restaurant repo:
+
+```bash
+cd restaurants/<slug>
+git init
+git symbolic-ref HEAD refs/heads/main
 ```
 
-Pizzas are stored as flat tuples in the `PIZZAS` array at the top of the file,
-then mapped to the object form — easier to scan and edit by row.
+Base repo policy:
 
-## Editing copy / translations
+- base `.gitignore` ignores `/restaurants/**`
+- changes inside restaurant repos are managed from within each nested repo
 
-Static strings (nav labels, headings, etc.) live in `assets/js/i18n.js`. Add a
-new key to both `de` and `en` blocks and put `data-i18n="my.key"` on the
-matching HTML element. Selected language is remembered in `localStorage`.
+## Workflow
 
-## Updating opening hours
-
-Edit the `HOURS` array near the bottom of `assets/js/menu.js`. The "Jetzt
-geöffnet / geschlossen" badge in the hero recomputes from the current time
-and season (May–Oct = summer hours, Nov–Apr = winter hours).
+1. Update shared template or skills in base repo.
+2. Run `./scripts/sync-skills.sh` after skill edits.
+3. Work on each restaurant site inside its own repo under `restaurants/`.
+4. Commit/push base and restaurant repos independently.

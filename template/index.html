@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurant Blueprint | Flexible Starter</title>
+  <meta name="description" content="A neutral restaurant starter that shares file names and data schema only.">
+  <meta name="theme-color" content="#0f1219">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Restaurant blueprint home">
+        <span class="brand-line">starter kit</span>
+        <span class="brand-name">Restaurant Blueprint</span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav">
+        <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#hours" data-i18n="nav.hours">Hours</a>
+        <a href="#catering" data-i18n="nav.catering">Catering</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-toggle" role="group" aria-label="Choose language">
+          <button data-lang="de" class="is-active" aria-pressed="true">DE</button>
+          <button data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="tel:+490000000000" class="cta cta-phone">
+          <span data-i18n="contact.phoneLabel">Phone</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow" data-i18n="hero.eyebrow">Concept-first starter</p>
+          <h1 class="hero-title">Build a new identity from day one.</h1>
+          <p class="hero-sub" data-i18n="hero.sub">Replace this text with your own story, then reshape colors and type
+            to match the cuisine.</p>
+          <div class="hero-actions">
+            <a href="tel:+490000000000" class="cta cta-primary" data-i18n="hero.cta1">Start reservations</a>
+            <a href="#menu" class="cta cta-ghost" data-i18n="hero.cta2">Browse menu data</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <p class="hero-panel-label">Status</p>
+          <span class="open-badge" id="openBadge" aria-live="polite"></span>
+          <p data-i18n="hero.address">Street 1, 00000 City</p>
+          <p class="hero-panel-tip">Tip: keep only schema and module names shared. Rework visual direction per
+            restaurant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <header class="section-head">
+          <p class="eyebrow">Quick framing</p>
+          <h2 class="section-title" data-i18n="about.title">Set the tone fast</h2>
+        </header>
+        <div class="letter">
+          <p data-i18n="about.p1">Use this block for a compact concept note, not a generic welcome letter.</p>
+          <p data-i18n="about.p2">Describe service style, product quality, and what makes this place unlike competitors.
+          </p>
+          <p class="signature" data-i18n="about.sig">Blueprint team note</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="menu.eyebrow">Data driven menu</p>
+          <h2 class="section-title" data-i18n="menu.title">Menu</h2>
+          <p class="section-sub" data-i18n="menu.sub">Keep the JS shape, rewrite the experience.</p>
+        </header>
+
+        <nav class="menu-tabs" id="menuTabs" aria-label="Categories"></nav>
+        <div id="menuRoot" class="menu-root"></div>
+
+        <footer class="menu-foot">
+          <p data-i18n="menu.allergens">Allergen information is available on request.</p>
+          <details class="allergen-legend">
+            <summary data-i18n="menu.legendToggle">Show allergen legend</summary>
+            <ol id="allergenLegend"></ol>
+          </details>
+        </footer>
+      </div>
+    </section>
+
+    <section class="hours" id="hours">
+      <div class="container hours-inner">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="hours.eyebrow">Operational rhythm</p>
+          <h2 class="section-title" data-i18n="hours.title">Opening hours</h2>
+          <p class="section-sub" data-i18n="hours.sub">Use this structure for seasonal split or daily schedules.</p>
+        </header>
+        <table class="hours-table">
+          <thead>
+            <tr>
+              <th data-i18n="hours.day">Day</th>
+              <th><span data-i18n="hours.winter">Winter</span></th>
+              <th><span data-i18n="hours.summer">Summer</span></th>
+            </tr>
+          </thead>
+          <tbody id="hoursBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="catering" id="catering">
+      <div class="container catering-inner">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="catering.eyebrow">Revenue extension</p>
+          <h2 class="section-title" data-i18n="catering.title">Catering</h2>
+        </header>
+        <div class="catering-grid">
+          <div class="catering-copy">
+            <p data-i18n="catering.p1">Describe event format, lead times, and preferred inquiry path.</p>
+            <p data-i18n="catering.p2">Swap this section out entirely if catering is not part of the concept.</p>
+            <a href="tel:+490000000000" class="cta cta-primary" data-i18n="catering.cta">Request now</a>
+          </div>
+          <ul class="catering-list" id="cateringList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Location and channels</p>
+          <h2 class="section-title" data-i18n="contact.title">Contact &amp; directions</h2>
+        </header>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 data-i18n="contact.addressLabel">Address</h3>
+            <p>Restaurant Blueprint<br>Street 1<br>00000 City</p>
+
+            <h3 data-i18n="contact.phoneLabel">Phone</h3>
+            <p><a href="tel:+490000000000">+49 0000 000000</a></p>
+
+            <h3 data-i18n="contact.emailLabel">Email</h3>
+            <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+
+            <h3 data-i18n="contact.socialLabel">Social</h3>
+            <p><a href="#">@restaurant-blueprint</a></p>
+          </div>
+          <div class="map-frame">
+            <iframe title="Restaurant location" src="https://www.google.com/maps?q=Berlin&output=embed" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <p class="footer-brand">Restaurant Blueprint</p>
+        <p data-i18n="footer.tagline">Design-neutral starter</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.imprint">Imprint</h4>
+        <p>
+          <span data-i18n="footer.owner">Owner:</span> Name<br>
+          Street 1, 00000 City<br>
+          <span data-i18n="footer.vat">VAT ID:</span> Optional
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.kontaktTitle">Contact</h4>
+        <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+      </div>
+      <p class="footer-credit">Copyright <span id="year"></span> Restaurant Blueprint.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/menu.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>
